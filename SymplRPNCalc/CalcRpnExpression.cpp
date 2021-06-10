@@ -5,25 +5,27 @@ const char cOper[] = "+-*/";
 
 int CalcRpnExpression(queue<string> rpnQu, double* calcRes, string* errMsg)
 {
-	double res = 0;
-	double n1, n2;
-	int err = 0;
-	string curTok = "";
-	stack <string> expStk;
+	double res = 0; //дл€ результов промежуточных вычислений
+	double n1, n2; //дл€ промежуточных значений операндов при вычислении операций
+	int err = 0; //код ошибки
+	string curTok = ""; //текущий токен
+	stack <string> expStk; //рабочий стек дл€ обработки выражени€
 
+	//в≥полн€ем обработку очереди, котора€ содержит выражением в пор€дке RPN 
 	while (!rpnQu.empty())
 	{
+		//берем токен из очереди
 		curTok = rpnQu.front();
 		rpnQu.pop();
 		
+		//если токен - не операци€ - помещаем его в рабочий стек (т.о. в стеке будут только числа)
 		if (strchr(cOper, curTok[0]) == NULL)
 		{
 			expStk.push(curTok);
 		}
-		else
+		else //иначе, если текущий токен - операци€, то выполн€ем текущую операцию над двума крайними значени€ми из рабочего стека
 		{
-			string numStr;
-			
+			//если в стеке меньше двух элементов - что то пошло не так
 			if (expStk.size() < 2)
 			{
 				err = 1;
@@ -31,13 +33,13 @@ int CalcRpnExpression(queue<string> rpnQu, double* calcRes, string* errMsg)
 				break;
 			}
 
-			numStr = expStk.top();
-			n2 = stod(numStr);
+			//получаем элементы из стека и переводим их в дабл
+			n2 = stod(expStk.top());
 			expStk.pop();
-			numStr = expStk.top();
-			n1 = stod(numStr);
+			n1 = stod(expStk.top());
 			expStk.pop();
 
+			//выполнение операций в зависимости от значени€ текущего оператора
 			switch (curTok[0])
 			{
 				case '+':
@@ -74,7 +76,7 @@ int CalcRpnExpression(queue<string> rpnQu, double* calcRes, string* errMsg)
 		}
 	} //while
 
-	//ѕолучаем результат. ƒолжен быть в стеке в первом ([0]) элементе
+	//ѕолучаем результат. ƒолжен быть в стеке в первом (нулевом) и единственном элементе стека. ≈сли это не так - ошибка.
 	if (expStk.size() != 1)
 	{
 		err = 1;

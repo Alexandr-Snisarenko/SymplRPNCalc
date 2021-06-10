@@ -2,11 +2,11 @@
 #include <queue>
 
 //√лобальные константы
-const char cNumber[] = "1234567890";
-const char cOper[] = "+-*/";
-const char cOper1[] = "+-";
-const char cOper2[] = "*/";
-const char cPrnts[] = "()";
+const char cNumber[] = "1234567890";//цифры
+const char cOper[] = "+-*/";//операторы
+const char cOper1[] = "+-";//операторы нижнего приоритета
+const char cOper2[] = "*/";//операторы верхнего приоритета
+const char cPrnts[] = "()";//скобки
 
 
 int ConvertMatExpresToRPN(string mathExpStr, string* pRpnExpStr, queue<string>* pRpnQu)
@@ -14,29 +14,34 @@ int ConvertMatExpresToRPN(string mathExpStr, string* pRpnExpStr, queue<string>* 
 
 	int is_OpenPrnts = 0;
 	int err = 0;
-	queue<string> rpnQu;
-	string numStr = "";
-	stack <char> depoStk;
+	queue<string> rpnQu; //очередь с результатом разбора строки в польскую нотацию
+	string numStr = ""; //строка дл€ формировани€ отдельных операндов из входной строки с мат. выражением
+	stack <char> depoStk; //рабочий "депо" стек. дл€ временного хранени€ операторов
 
 	pRpnExpStr->clear();
 	*pRpnQu = {};
 
+	//обход строки с мат выражением
 	for (char curChr : mathExpStr)
 	{
+		//если текущий символ - число - добавл€ем его к строке numStr
 		if (strchr(cNumber, curChr) != NULL)
 			numStr += curChr;
-		else
+		else  // если текущий сивол не число, то, если строка numStr не пуста€, переносим еЄ в rpn очередь и очищаем строку numStr
 			if (!numStr.empty())
 			{
 				rpnQu.push(numStr);
 				numStr.clear();
 			}
 
+		//если текущий символ - лева€ скобка - в стек "депо"
 		if (curChr == '(')
 			depoStk.push(curChr);
 
+		//если текущий символ - права€ скобка 
 		if (curChr == ')')
 		{
+			//то пока не встретитьс€ лева€ скобка переносим операторы из депо стека в rpn очередь 
 			while (depoStk.top() != '(')
 			{
 				rpnQu.push(string(1, depoStk.top()));
@@ -50,17 +55,20 @@ int ConvertMatExpresToRPN(string mathExpStr, string* pRpnExpStr, queue<string>* 
 				}
 
 			}
-
-			if (!depoStk.empty())
-				depoStk.pop();
+			
+			//удал€ем левую скобку из депо стека
+			depoStk.pop();
 		}
 
+		//если текущий символ - оператор 
 		if (strchr(cOper, curChr) != NULL)
 		{
-
+			//если депо стек не пустой и крайний элемент - опреатор
 			if (!depoStk.empty() and strchr(cOper, depoStk.top()) != NULL)
 			{
-
+				//то, если текущий оператор нижнего приоритета или 
+				// (текущий оператор верхнего приоритета и в стеке крайний элемент - оператор верхнего приоритета), то
+				// переносим крайний элемент (оператор) из депо стека в rpn очередь
 				if ((strchr(cOper1, curChr) != NULL) or
 					(strchr(cOper2, curChr) != NULL and strchr(cOper2, depoStk.top()) != NULL))
 				{
@@ -69,6 +77,7 @@ int ConvertMatExpresToRPN(string mathExpStr, string* pRpnExpStr, queue<string>* 
 				}
 			}
 
+			//текущий оператор помещаем в рабочий стек
 			depoStk.push(curChr);
 		}
 

@@ -83,7 +83,7 @@ int MathExpressionSyntaxCheck(string mathStr, string* pErrMsg)
 			break;
 		}
 
-		//проверка первого символа
+		//проверка крайнего символа
 		if (strchr(cOper, mathStr[mathStr.length()-1]) != NULL)
 		{
 			*pErrMsg = (string)"Last symbol is Operator.'";
