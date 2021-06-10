@@ -1,10 +1,9 @@
 #include "CalcRpnExpression.h"
 
-<<<<<<< HEAD
 //Глобальные константы
 const char cOper[] = "+-*/";
 
-int CalcRpnExpression(queue<string> rpnQu, string* calcRes, string* errMsg)
+int CalcRpnExpression(queue<string> rpnQu, double* calcRes, string* errMsg)
 {
 	double res = 0;
 	double n1, n2;
@@ -75,6 +74,7 @@ int CalcRpnExpression(queue<string> rpnQu, string* calcRes, string* errMsg)
 		}
 	} //while
 
+	//Получаем результат. Должен быть в стеке в первом ([0]) элементе
 	if (expStk.size() != 1)
 	{
 		err = 1;
@@ -82,35 +82,10 @@ int CalcRpnExpression(queue<string> rpnQu, string* calcRes, string* errMsg)
 	}
 	else
 	{
-		*calcRes = expStk.top();
+		*calcRes = stod(expStk.top());
 	}
 
 
 	return err;
 }
 
-=======
-string CalcRpnExpression(string rpnExpStr, string* pErrMsg)
-{
-	double res;
-	string str = "";
-	stack <string> expStk;
-
-	for (char curChr : rpnExpStr)
-	{
-		if (curChr == ' ')
-		{
-			expStk.push(str);
-			str = "";
-		}
-		else
-		{
-			str += curChr;
-		}
-	}
-
-
-
-	return string();
-}
->>>>>>> bc41a2ed52eeeeff2fb9d76254e9f1d2c3ff8cff

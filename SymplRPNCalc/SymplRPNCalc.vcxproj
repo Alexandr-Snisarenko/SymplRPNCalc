@@ -141,10 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CalcRpnExpression.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="ShowResults.cpp" />
-=======
->>>>>>> bc41a2ed52eeeeff2fb9d76254e9f1d2c3ff8cff
     <ClCompile Include="SymplRPNCalc.cpp" />
     <ClCompile Include="ConverMathToRPN.cpp" />
     <ClCompile Include="LoadExpression.cpp" />
@@ -153,10 +150,7 @@
   <ItemGroup>
     <ClInclude Include="ConverMathToRPN.h" />
     <ClInclude Include="CalcRpnExpression.h" />
-<<<<<<< HEAD
     <ClInclude Include="ShowResults.h" />
-=======
->>>>>>> bc41a2ed52eeeeff2fb9d76254e9f1d2c3ff8cff
     <ClInclude Include="SyntaxCheck.h" />
     <ClInclude Include="LoadExpression.h" />
   </ItemGroup>
