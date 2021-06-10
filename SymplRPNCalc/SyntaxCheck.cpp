@@ -2,10 +2,10 @@
 
 
 //Глобальные константы
-const char cLegalChr[] = "1234567890+-*/()";
-const char cNumber[] = "1234567890";
-const char cOper[] = "+-*/";
-const char cPrnts[] = "()";
+const char cLegalChr[] = "1234567890+-*/()"; //список допустимых символов
+const char cNumber[] = "1234567890"; //цифры
+const char cOper[] = "+-*/"; //операторы
+const char cPrnts[] = "()"; //скобки
 
 // проверка на недопустимые комбинации символов
 int CheckMathSymbolCombination(char curChr, char prevChr, string* errMsg )
@@ -80,7 +80,7 @@ int MathExpressionSyntaxCheck(string mathStr, string* pErrMsg)
 		//проверка первого символа. если оператор - ошибка
 		if (strchr(cOper, mathStr[0]) != NULL)
 		{
-			*pErrMsg = (string)"First symbol is Operator.'";
+			*pErrMsg = (string)"First symbol is Operator.";
 			err = 1;
 			break;
 		}
@@ -88,7 +88,7 @@ int MathExpressionSyntaxCheck(string mathStr, string* pErrMsg)
 		//проверка крайнего символа. если оператор - ошибка
 		if (strchr(cOper, mathStr[mathStr.length()-1]) != NULL)
 		{
-			*pErrMsg = (string)"Last symbol is Operator.'";
+			*pErrMsg = (string)"Last symbol is Operator.";
 			err = 1;
 			break;
 		}

@@ -9,7 +9,7 @@
 #include "ShowResults.h"
 using namespace std;
 
-
+/////////////Основная программа
 
 int main()
 {
@@ -23,7 +23,8 @@ int main()
     int err = 0; //код ошибки
 
     cout << "This application evaluates an arbitrary mathematical expression using reverse Polish notation." << endl;
-    cout << "The original expression can only contain: integers, simple operations(+-*/ ) and parentheses." << endl << endl;
+    cout << "The original expression can only contain: integers, simple operations(+-*/ ) and parentheses." << endl;
+    cout << "For example: 4-2*(10-3*2)+15-7" << endl;
 
     while (exitCode != 27) //Выход по клавише "Esc"
     {

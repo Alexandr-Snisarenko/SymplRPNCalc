@@ -6,10 +6,12 @@ void ShowCalcResults(string mathExpStr, string rpnExpStr, double calcRes)
 	cout << "Given Expression: " << mathExpStr << endl;
 	cout << "Revers Poland Notation: " << rpnExpStr << endl;
 	cout << "Result of expression: " << calcRes << endl;
+	cout << endl;
 }
 
 void ShowErrorMsg(string errMsg)
 {
 	cout << endl;
 	cout << "Error!: " << errMsg << endl;
+	cout << endl;
 }

@@ -3,6 +3,7 @@
 int LoadMathExpression(string* mathExprStr)
 {
 	*mathExprStr = "";
+	cout << endl;
 	cout << "Input Math expression: ";
 	getline(cin, *mathExprStr);
 
