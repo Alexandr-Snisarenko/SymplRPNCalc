@@ -1,5 +1,6 @@
 #include "CalcRpnExpression.h"
 
+<<<<<<< HEAD
 //Глобальные константы
 const char cOper[] = "+-*/";
 
@@ -88,3 +89,28 @@ int CalcRpnExpression(queue<string> rpnQu, string* calcRes, string* errMsg)
 	return err;
 }
 
+=======
+string CalcRpnExpression(string rpnExpStr, string* pErrMsg)
+{
+	double res;
+	string str = "";
+	stack <string> expStk;
+
+	for (char curChr : rpnExpStr)
+	{
+		if (curChr == ' ')
+		{
+			expStk.push(str);
+			str = "";
+		}
+		else
+		{
+			str += curChr;
+		}
+	}
+
+
+
+	return string();
+}
+>>>>>>> bc41a2ed52eeeeff2fb9d76254e9f1d2c3ff8cff

@@ -30,9 +30,12 @@
     <ClCompile Include="CalcRpnExpression.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ShowResults.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+=======
+>>>>>>> bc41a2ed52eeeeff2fb9d76254e9f1d2c3ff8cff
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoadExpression.h">
@@ -47,8 +50,11 @@
     <ClInclude Include="CalcRpnExpression.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ShowResults.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+=======
+>>>>>>> bc41a2ed52eeeeff2fb9d76254e9f1d2c3ff8cff
   </ItemGroup>
 </Project>
