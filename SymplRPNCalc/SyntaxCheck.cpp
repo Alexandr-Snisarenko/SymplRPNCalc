@@ -7,6 +7,7 @@ const char cNumber[] = "1234567890";
 const char cOper[] = "+-*/";
 const char cPrnts[] = "()";
 
+// проверка на недопустимые комбинации символов
 int CheckMathSymbolCombination(char curChr, char prevChr, string* errMsg )
 {
 	int err = 0;
@@ -59,12 +60,13 @@ int MathExpressionSyntaxCheck(string mathStr, string* pErrMsg)
 {
 
 
-	int cntLeftLPrnts = 0;
-	int cntRightPrnts = 0;
+	int cntLeftLPrnts = 0; //кол-во левых скобок
+	int cntRightPrnts = 0; //кол-во правых скобок
 	int err = 0;
-	char prevChr = NULL;
+	char prevChr = NULL; //переменная для предыдущего символа при анализе последовательности символов
 	*pErrMsg = "";
-
+	
+	//обход строки выражения
 	for (char curChr : mathStr)
 	{
 		//проверяем на допустимые символы
@@ -75,7 +77,7 @@ int MathExpressionSyntaxCheck(string mathStr, string* pErrMsg)
 			break;
 		}
 
-		//проверка первого символа
+		//проверка первого символа. если оператор - ошибка
 		if (strchr(cOper, mathStr[0]) != NULL)
 		{
 			*pErrMsg = (string)"First symbol is Operator.'";
@@ -83,7 +85,7 @@ int MathExpressionSyntaxCheck(string mathStr, string* pErrMsg)
 			break;
 		}
 
-		//проверка крайнего символа
+		//проверка крайнего символа. если оператор - ошибка
 		if (strchr(cOper, mathStr[mathStr.length()-1]) != NULL)
 		{
 			*pErrMsg = (string)"Last symbol is Operator.'";
